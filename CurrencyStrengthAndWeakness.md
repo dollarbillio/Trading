@@ -19,23 +19,55 @@ if signs == "+-+":
 ```
 
 -----------------------------------------------------------------------------------------------
+**Long GU**
+```
+If current position = GU(-) as the best position, G(-), U(+), 
+*Maximum position: GJ(-) and UJ(+) --> if GU(+) -> will not happen
+                                   --> if GU(-) -> keep the position
 
-If position is Long GU as the best position, want Long G, Short U, 
-Maximum position:Long GJ and Short UJ -> if GU is up -> keep the position
-                                      -> if GU is down -> short UJ
-Lesser position: GJ up and UJ up (Strength of U) --> If GU is up -> Change to long GJ 
-                                                 --> If GU is down ->  Change to long UJ
-                GJ down and UJ down (weakness of G) --> if GU is up --> Change to short UJ
-                                                    --> if GU is down --> short GJ
-Worst position: GJ down and UJ up (weakness of G and strength of U) --> if GU up --> long UJ
-                                                                    --> if GU down --> short GU
--------------------------------------------------------------------------------------------------
-If position is Short GJ as the best position, want Short G, Long J, 
-Maximum position: Short GU and Short UJ -> if GJ is up -> Short UJ
-                                      -> if GJ is down -> keep the position
-Lesser position: GU down and UJ up (Strength of J) --> If GJ is up -> Change to long UJ 
-                                                 --> If GJ is down ->  Change to short GU
-                GU up and UJ down (strength of G) --> if GJ is up --> Change to short UJ
-                                                    --> if GJ is down --> short GJ
-Worst position: GU up and UJ up (weakness of J and strength of G) --> if GJ up --> long GJ
-                                                                    --> if GJ down --> long UJ
+*Lesser position: GJ(-) and UJ(-) (weakness of U) --> If GU(+) -> Change to short UJ
+                                                  --> If GU(-) ->  Change to short GJ
+                 GJ(+) and UJ(+) (strength of G)  --> if GU(+) -> Change to long GJ
+                                                  --> if GU(-) -> long UJ
+
+*Worst position: GJ(+) and UJ(-) [G(+) and U(+)] --> if GU(+) -> long GU
+                                                 --> if GU(-) -> not happen
+```
+**Short GU**
+```
+If current position = GU(+) as the best position, G(+), U(-), 
+*Maximum position:GJ(+) and UJ(-) --> if GU(+) -> keep the position (GU(+))
+                                  --> if GU(-) -> Will not happen
+
+*Lesser position: GJ(+) and UJ(+) (Strength of U) --> If GU(+) -> Change to long GJ 
+                                                  --> If GU(-) ->  Change to long UJ
+                  GJ(-) and UJ(-) (weakness of G) --> if GU(+) --> Change to short UJ
+                                                  --> if GU(-) --> short GJ
+
+Worst position: GJ(-) and UJ(+) (weakness of G and strength of U) --> if GU(+)  --> Will not happen
+                                                                  --> if GU down --> short GU
+```
+**Short GJ**
+```
+If GJ(-) as the best position, G(-), J(+), 
+Maximum position: GU(-) and UJ(-) --> if GJ(+) -> will not happens
+                                  --> if GJ(-) -> keep the position
+Lesser position: GU(-) and UJ(+) (Weakness of J) --> If GJ(+) -> Change to long UJ 
+                                                 --> If GJ(-) ->  Change to short GU
+                 GU(+) and UJ(-) (strength of G) --> if GJ(+) --> Change to long GU
+                                                 --> if GJ(-) --> short UJ
+Worst position: GU(+) and UJ(+) (weakness of J and strength of G) --> if GJ up --> long GJ
+                                                                  --> if GJ down --> will not happen
+```
+**Long GJ**
+```
+If GJ(+) as the best position, G(+), J(-), 
+Maximum position: GU(+) and UJ(+) --> if GJ(+) -> keep the position
+                                  --> if GJ(-) -> will not happen
+Lesser position: GU(-) and UJ(+) (Weakness of G) --> If GJ(+) -> Change to long UJ 
+                                                 --> If GJ(-) ->  Change to short GU
+                 GU(+) and UJ(-) (strength of J) --> if GJ(+) --> Change to long GU
+                                                 --> if GJ(-) --> short UJ
+Worst position: GU(-) and UJ(-) [J(+) and G(J)] --> if GJ up --> will not happen
+                                                                  --> if GJ down --> short GJ
+```
