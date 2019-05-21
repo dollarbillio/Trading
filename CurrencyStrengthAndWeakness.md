@@ -5,13 +5,13 @@ if signs == "+++":
 if signs == "++-":
     print ("G>J, G>U, U<J --> Long GU")
 if signs == "+--":
-    print ("G>J, G<U, U<J --> Short UJ")
+    print ("G>J, G<U, U<J --> Rotation")
 if signs == "---":
     print ("G<J, G<U, U<J --> Short GJ")
 if signs == "--+":
     print ("G<J, G<U, U>J --> Short GU")
 if signs == "-++":
-    print ("G<J, G>U, U>J --> Long UJ")
+    print ("G<J, G>U, U>J --> Rotation")
 if signs == "-+-":
     print ("G<J, G>U, U<J --> Short UJ")
 if signs == "+-+":
