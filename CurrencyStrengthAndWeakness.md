@@ -69,5 +69,5 @@ Lesser position: GU(-) and UJ(+) (Weakness of G) --> If GJ(+) -> Change to long 
                  GU(+) and UJ(-) (strength of J) --> if GJ(+) --> Change to long GU
                                                  --> if GJ(-) --> short UJ
 Worst position: GU(-) and UJ(-) [J(+) and G(J)] --> if GJ up --> will not happen
-                                                                  --> if GJ down --> short GJ
+                                                 --> if GJ down --> short GJ
 ```
