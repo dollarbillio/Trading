@@ -1,3 +1,4 @@
+```py
 signs = input ("Signs for GJ_GU_UJ?: ")
 if signs == "+++":
     print ("G>J, G>U, U>J --> Long GJ")
@@ -15,7 +16,10 @@ if signs == "-+-":
     print ("G<J, G>U, U<J --> Short UJ")
 if signs == "+-+":
     print ("G>J, G<U, U>J --> Long UJ")
------------------------------------------
+```
+
+-----------------------------------------------------------------------------------------------
+
 If position is Long GU as the best position, want Long G, Short U, 
 Maximum position:Long GJ and Short UJ -> if GU is up -> keep the position
                                       -> if GU is down -> short UJ
