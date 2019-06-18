@@ -5,9 +5,9 @@
 * Track USDX, XAUUSD
 * Track SP500, DJIA, FTSE100
 ---
-Track all Risk On Risk Off
+* Track all Risk On Risk Off
 ---
-Take 30 pips off at 50% order
-25% at 60 pips 
-25% floating, adjusting stop-loss
+* Take 30 pips off at 50% order
+* 25% at 60 pips 
+* 25% floating, adjusting stop-loss
 ---
