@@ -11,3 +11,9 @@
 * 25% at 60 pips 
 * 25% floating, adjusting stop-loss
 ---
+**G7**
+- JPY
+- GBP
+- EUR: FR, GER, ITA
+- USD
+- CAD
