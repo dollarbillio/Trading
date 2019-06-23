@@ -17,3 +17,5 @@
 - EUR: FR, GER, ITA
 - USD
 - CAD
+---
+**IG Sentiment Indicator**
