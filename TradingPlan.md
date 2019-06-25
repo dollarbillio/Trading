@@ -19,3 +19,7 @@
 - CAD
 ---
 **IG Sentiment Indicator**
+---
+* Remember to watch how London and US Market did to the Currency
+---
+* EUR/USD is most interrupted
