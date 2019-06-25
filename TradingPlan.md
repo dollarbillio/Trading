@@ -23,3 +23,4 @@
 * Remember to watch how London and US Market did to the Currency
 ---
 * EUR/USD is most interrupted
+* Để ý candle lúc 16h
