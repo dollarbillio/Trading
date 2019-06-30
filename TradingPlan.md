@@ -24,3 +24,6 @@
 ---
 * EUR/USD is most interrupted
 * Để ý candle lúc 16h
+---
+* EquityCurveSimulator
+http://www.equitycurvesimulator.com/
