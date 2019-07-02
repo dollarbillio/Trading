@@ -27,3 +27,37 @@
 ---
 * EquityCurveSimulator
 http://www.equitycurvesimulator.com/
+---
+* Spend enough time in Demo Account
+* Regardless of the reason, very few people who wanted to trade actually become successful. Whether they took other jobs, didn’t feel they got adequate training, or just didn’t make enough money isn’t really the point. They came to trade, but ultimately left with nothing in their pockets while people sitting next to them continued to make money. To me that is the real statistic. Whether you’re lured away, your spouse convinces you not to do it, success doesn’t happen as quickly as you want it, you hit a string of bad luck…the excuse doesn’t matter 
+* make no more then 2 trades a day, and never have more then 4 trades running at a time (preferably no more then 2 running at a time so you are able to properly monitor and manage the trades) then you will be fine.
+* 'The test is to recognize the mistake, admit it and correct it. To have tried to do something and failed is vastly better than to have tried to do nothing and succeeded.
+
+* If an investor is trading 0.01 per $1000.00 USD, this would be considered a safe investment level.
+If you have a ticket in profit, then simply set the SL to breakeven, or just above breakeven for a small profit, then let
+the ticket run, and stack another 0.01 ticket into your basket. 
+Just keep doing that until the market tells you when to get out of the trade.
+Be sure to keep moving your SL levels as your tickets increase in profits.
+When your SL hits and closes out your tickets, you will have collected profits on all your tickets
+
+* There are no ultimate "hidden secrets" to profitable trading in Forex.
+
+Just pick the correct direction of movement, and place the trade.
+
+A currency pair can only do one of three things.
+
+1) Move up
+2) Nothing. Not moving.
+3) Move down
+
+I determine which way the market is moving, verify the movement is true, and then place my trade with a REASONABLE profit target.
+
+My stop loss is generally no greater than 30 pips.
+
+If it moves up and the general trend is up, I buy..
+If it does not move, I don't do anything.
+If it moves down and the general trend is down, I sell
+
+If a trade is going bad, I don't hold on to it, I kill the trade, and just wait for the next setup for entry. 
+
+Emotions have no place in trading. It's just data on the screen. Nothing more.
