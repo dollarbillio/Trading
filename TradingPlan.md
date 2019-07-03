@@ -60,4 +60,8 @@ If it moves down and the general trend is down, I sell
 
 If a trade is going bad, I don't hold on to it, I kill the trade, and just wait for the next setup for entry. 
 
+If it's just sitting still without any real indication of what the market movement is, then don't do anything.
+
+Pay attention to your technical analysis so you can see the strength and speed of market moves, but you must also pay attention to your fundamental analysis as well, as that will tell you the reasons why of the markets are moving.
+
 Emotions have no place in trading. It's just data on the screen. Nothing more.
