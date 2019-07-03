@@ -67,3 +67,11 @@ Pay attention to your technical analysis so you can see the strength and speed o
 Emotions have no place in trading. It's just data on the screen. Nothing more.
 
 If you enter with a small ticket size, you can always stack additional tickets into your trade basket and cover them with your winning ticket profits, etc etc etc.
+When you have a winning trade, let it run it's course, move your SL level to just above entry price for break even, then just wait patiently for the trade to hit the TP target.
+
+Automate those tasks which are easily automated.
+
+And for those tasks which you determine cannot be fully automated for your strategy, then you must practice and master those items until you feel comfortable with your skill set for trading on a live account.
+
+To start with, he told me that there are vast differences between demo trading and live trading. The first and most obvious being the 'human emotion' aspect of it. In demo trading you don't feel the fear, greed, confusion, anger, etc. Simply because it is not real money. Mistakes on a demo account does not affect you.
+
