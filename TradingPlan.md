@@ -78,3 +78,24 @@ To start with, he told me that there are vast differences between demo trading a
 you should carefully develop a Money Management (managing winning trades) and Risk Management (managing losses) strategy/rules. This is the ONLY way to ensure that you manage your account properly and can get up tomorrow to trade again. Things like Risk/Reward (Stop-loss/Take Profit), Maximum Risk (calculation of stop-loss distance and lot size) per trade/ and per account. So say for example your will not risk losing more than 1% per trade and 5% in total for all trades. I think you should get the idea of what I am talking about. These are extremely important rules that MUST be in place and be obeyed if you don't want to blow your account in a week or month like I did.
 
 In closing, my best advice, based on personal experience, is not create expectations in this game. Do your homework, get your carefully developed Trading Plan, Risk/Money Management and Trading Strategy in place, and then treat it like you would proper business or high profile job.
+
+
+I would say for the first 6 months just watch videos, read, look at stuff, take trades with the smallest amounts possible if you want to.
+Spend time backtesting ideas. 6 months is rather short really. Even the shortest formations (haircutter etc) take longer right?
+Also depends if you are full time or not. I think 2 years is required for people to have a diploma to bake bread and make cakes.
+People think trading is easier than baing bread? C'mon.
+Just spend a couple thousands of hours accumulating info and trying to understand 'why did the market move in that direction rather than that one' and 'why did this strategy stop working' etc.
+Honestly it's going to take years imo. If you full time 16 hours a day, maybe it'll only take 1 year lol idk.
+
+Then eventually when you have some solid background & understanding, I think you would find it useful to stick to these rules:
+
+1- Preserve capital.
+2- Preserve mental capital.
+3- Build a bias.
+4- Have systems to enter and (more importantly?) exit.
+5- Find ideas to enter.
+
+Etc, those are the main 5 ones. We are all different but I think having this way of seeing things help. Being organised and having a solid set routine/set of rules is just too awesome not to do.
+
+You need experience to know what to do in different scenarios.
+I am pretty sure there is no simple no brainer strategy you can just apply... Makes no sense to think there is.
