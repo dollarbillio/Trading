@@ -65,3 +65,5 @@ If it's just sitting still without any real indication of what the market moveme
 Pay attention to your technical analysis so you can see the strength and speed of market moves, but you must also pay attention to your fundamental analysis as well, as that will tell you the reasons why of the markets are moving.
 
 Emotions have no place in trading. It's just data on the screen. Nothing more.
+
+If you enter with a small ticket size, you can always stack additional tickets into your trade basket and cover them with your winning ticket profits, etc etc etc.
