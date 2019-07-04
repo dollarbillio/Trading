@@ -114,3 +114,15 @@ If emotions create problem for new traders, then set and forget type style of tr
 If new traders will enter market orders, it very easy to make wrong decisions based on emotions or fear of missing out trades etc.
 
 A robot to take account of news releases, market sentiments, market volatility, and adjust your strategy based on current conditions
+
+---
+What is Grid and Martingale System? With a large enough account balance, and the smallest possible trade units or lot sizes, martingale and grid systems can be extremely profitable.
+
+However martingale and grid systems are not the same thing. Grid systems do not always use Martingale.
+
+Martingale is generally used to calculate the size increment level of the next trade that you are going to open.
+
+Martingale doesn't have a specific entry and exit point. 
+
+Your entry and exit points would be determined by your trading strategy.
+Martingale determines the size of the trade.
