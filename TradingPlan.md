@@ -126,3 +126,13 @@ Martingale doesn't have a specific entry and exit point.
 
 Your entry and exit points would be determined by your trading strategy.
 Martingale determines the size of the trade.
+
+In general it should be noted that all trading strategies will incur losses at some point.
+
+Martingale is a calculation method used to determine the lot size of the trade.
+Your entry and exit points are determined by your strategy.
+
+If a trader is using a high risk strategy with a small account balance, then there is a far greater risk of blowing the account.
+
+If a trader is using a low risk strategy, trades very carefully using very small trade sizes, and has a large account balance, then there is less of a risk of blowing the account.
+---
