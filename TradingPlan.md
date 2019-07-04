@@ -28,6 +28,9 @@
 * EquityCurveSimulator
 http://www.equitycurvesimulator.com/
 ---
+* What can correlation be used if it showed only the past
+https://www.myfxbook.com/forex-market/correlation
+---
 * Spend enough time in Demo Account
 * Regardless of the reason, very few people who wanted to trade actually become successful. Whether they took other jobs, didn’t feel they got adequate training, or just didn’t make enough money isn’t really the point. They came to trade, but ultimately left with nothing in their pockets while people sitting next to them continued to make money. To me that is the real statistic. Whether you’re lured away, your spouse convinces you not to do it, success doesn’t happen as quickly as you want it, you hit a string of bad luck…the excuse doesn’t matter 
 * make no more then 2 trades a day, and never have more then 4 trades running at a time (preferably no more then 2 running at a time so you are able to properly monitor and manage the trades) then you will be fine.
