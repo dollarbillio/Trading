@@ -104,3 +104,11 @@ You need experience to know what to do in different scenarios.
 I am pretty sure there is no simple no brainer strategy you can just apply... Makes no sense to think there is.
 
 Good Risk to reward means take only those trades which has very high probability of success with take profit and stoploss ratio of more than 2 or even more.
+
+But if someone will take just every trade and hope the market will give at least 2 times profit pips compared to his stop loss, then it is a wrong approach.
+
+All new traders must reduce the number trades they take every day or every week to half and then, naturally their trading profits will increase since they will take only high probability trades.
+
+If emotions create problem for new traders, then set and forget type style of trading is best with pending orders to get triggered automatically with fixed stoploss and takeprofit.
+
+If new traders will enter market orders, it very easy to make wrong decisions based on emotions or fear of missing out trades etc.
