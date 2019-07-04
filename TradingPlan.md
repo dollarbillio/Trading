@@ -102,3 +102,5 @@ Etc, those are the main 5 ones. We are all different but I think having this way
 
 You need experience to know what to do in different scenarios.
 I am pretty sure there is no simple no brainer strategy you can just apply... Makes no sense to think there is.
+
+Good Risk to reward means take only those trades which has very high probability of success with take profit and stoploss ratio of more than 2 or even more.
