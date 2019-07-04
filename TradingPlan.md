@@ -112,3 +112,5 @@ All new traders must reduce the number trades they take every day or every week 
 If emotions create problem for new traders, then set and forget type style of trading is best with pending orders to get triggered automatically with fixed stoploss and takeprofit.
 
 If new traders will enter market orders, it very easy to make wrong decisions based on emotions or fear of missing out trades etc.
+
+A robot to take account of news releases, market sentiments, market volatility, and adjust your strategy based on current conditions
