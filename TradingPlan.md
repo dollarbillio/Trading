@@ -135,4 +135,30 @@ Your entry and exit points are determined by your strategy.
 If a trader is using a high risk strategy with a small account balance, then there is a far greater risk of blowing the account.
 
 If a trader is using a low risk strategy, trades very carefully using very small trade sizes, and has a large account balance, then there is less of a risk of blowing the account.
+
+Martingale can survive trends but only where there’s sufficient pullback. This is why you have to watch out for break-outs of significant new trends – watch out especially around key support/resistance levels.
+
+Trading pairs that have strong trending behavior like Yen crosses or commodity currencies can be very risky.
+
+For example, if you are trading EURUSD and your strategy indicates a BUY trigger you might open a ticket such as:
+EURUSD BUY 0.01 SL 50 pips TP 100 pips
+
+If the ticket hits the SL and closes out, then you might be down $5.00 on the account, so then you would wait for the next setup for entry. 
+
+When the new setup occurs on EURUSD, perhaps the strategy once again indicates a BUY trigger you might open a ticket such as:
+EURUSD BUY 0.02 SL 50 pips TP 100 pips
+
+If this ticket failed, we would analyze the market and wait for the next setup trigger.
+So the next ticket might look slike:
+EURUSD BUY 0.04 SL 50 pips TP 100 pips
+
+The direction of the trade would be determined by the markets and your analysis of the situation.
+
+This isn't just opening a trade and hoping it is the right direction. Just because one of the trades failed, doesn't mean we have to immediately enter the markets again and hope or gamble for a winner.
+
+
+Martingale style lot size calculations can be very useful for doing account recovery in heavily trending currency pairs.
+
+It becomes useful to know how much the pair your trading moves on a daily basis if your a short term trader
+
 ---
