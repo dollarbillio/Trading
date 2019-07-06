@@ -161,4 +161,5 @@ Martingale style lot size calculations can be very useful for doing account reco
 
 It becomes useful to know how much the pair your trading moves on a daily basis if your a short term trader
 
+I use volatility based ATR stop loss instead of fixed pips.my take profit pips also based on ATR. For example for EURUSD my STOPLOSS pips are from 40pips to 100pips based on current volatility.
 ---
