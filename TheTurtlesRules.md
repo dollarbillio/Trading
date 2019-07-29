@@ -9,3 +9,5 @@
 * If 55-day box broken out --> enter
 5) Adding position by price + 1/2N 
 6) Move-up stoploss: based on 5) move the initial position stop 1/2N so that the total position risk is now 2N (each one is 1N)
+7) For each instrument: more volatility = wider stop and smaller position size
+8) Determine Strength and Weakness based on how many N has move from the last breakout, divided by N to normalize among markets
