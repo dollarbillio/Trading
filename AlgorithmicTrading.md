@@ -3,3 +3,5 @@ Links to follow up:
 https://www.datacamp.com/community/tutorials/finance-python-trading
 
 https://www.oreilly.com/learning/algorithmic-trading-in-less-than-100-lines-of-python-code
+
+https://medium.com/auquan/a-beginners-guide-to-quantitative-trading-e6ed5d6b1c0d
