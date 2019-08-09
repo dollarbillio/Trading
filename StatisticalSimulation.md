@@ -311,4 +311,48 @@ for i in range(sims):
 r_sq_95_ci = np.percentile(rsquared_boot, [2.5, 97.5])
 print("R Squared 95% CI = {}".format(r_sq_95_ci))
 ```
+---
+Basic jackknife estimation - mean
+Jackknife resampling is an older procedure, which isn't used as often compared as bootstrapping. However, it's still useful to know how to run a basic jackknife estimation procedure. In this first exercise, we will calculate the jackknife estimate for the mean. Let's return to the wrench factory.
+
+You own a wrench factory and want to measure the average length of the wrenches to ensure that they meet some specifications. Your factory produces thousands of wrenches every day, but it's infeasible to measure the length of each wrench. However, you have access to a representative sample of 100 wrenches. Let's use jackknife estimation to get the average lengths.
+```py
+# Leave one observation out from wrench_lengths to get the jackknife sample and store the mean length
+mean_lengths, n = [], len(wrench_lengths)
+index = np.arange(n)
+
+for i in range(n):
+    jk_sample = wrench_lengths[index != i]
+    mean_lengths.append(np.mean(jk_sample))
+
+# The jackknife estimate is the mean of the mean lengths from each sample
+mean_lengths_jk = np.mean(np.array(mean_lengths))
+print("Jackknife estimate of the mean = {}".format(mean_lengths_jk))
+```
+---
+Jackknife confidence interval for the median
+In this exercise, we will calculate the jackknife 95% CI for a non-standard estimator. Here, we will look at the median. Keep in mind that the variance of a jackknife estimator is n-1 times the variance of the individual jackknife sample estimates where n is the number of observations in the original sample.
+
+Returning to the wrench factory, you are now interested in estimating the median length of the wrenches along with a 95% CI to ensure that the wrenches are within tolerance.
+
+Let's revisit the code from the previous exercise, but this time in the context of median lengths. By the end of this exercise, you will have a much better idea of how to use jackknife resampling to calculate confidence intervals for non-standard estimators.
+```py
+# Leave one observation out to get the jackknife sample and store the median length
+median_lengths = []
+for i in range(n):
+    jk_sample = wrench_lengths[index != i]
+    median_lengths.append(np.median(jk_sample))
+
+median_lengths = np.array(median_lengths)
+
+# Calculate jackknife estimate and it's variance
+jk_median_length = np.mean(median_lengths)
+jk_var = (n-1)*np.var(median_lengths)
+
+# Assuming normality, calculate lower and upper 95% confidence intervals
+jk_lower_ci = jk_median_length - 1.96*np.sqrt(jk_var)
+jk_upper_ci = jk_median_length + 1.96*np.sqrt(jk_var)
+print("Jackknife 95% CI lower = {}, upper = {}".format(jk_lower_ci, jk_upper_ci))
+```
+---
 
