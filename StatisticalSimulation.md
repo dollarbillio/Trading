@@ -269,3 +269,46 @@ boot_95_ci = np.percentile(mean_lengths, [2.5, 97.5])
 print("Bootstrapped Mean Length = {}, 95% CI = {}".format(boot_mean, boot_95_ci))
 ```
 ---
+Non-standard estimators
+In the last exercise, you ran a simple bootstrap that we will now modify for more complicated estimators.
+
+Suppose you are studying the health of students. You are given the height and weight of 1000 students and are interested in the median height as well as the correlation between height and weight and the associated 95% CI for these quantities. Let's use bootstrapping.
+
+Examine the pandas DataFrame df with the heights and weights of 1000 students. Using this, calculate the 95% CI for both the median height as well as the correlation between height and weight.
+```py
+# Sample with replacement and calculate quantities of interest
+sims, data_size, height_medians, hw_corr = 1000, df.shape[0], [], []
+for i in range(sims):
+    tmp_df = df.sample(n=data_size, replace=True)
+    height_medians.append(tmp_df['heights'].median())
+    hw_corr.append(tmp_df.weights.corr(tmp_df.heights))
+
+# Calculate confidence intervals
+height_median_ci = np.percentile(height_medians, [2.5, 97.5])
+height_weight_corr_ci = np.percentile(hw_corr, [2.5, 97.5])
+print("Height Median CI = {} \nHeight Weight Correlation CI = {}".format( height_median_ci, height_weight_corr_ci))
+```
+---
+Bootstrapping regression
+Now let's see how bootstrapping works with regression. Bootstrapping helps estimate the uncertainty of non-standard estimators. Consider the R2 statistic associated with a regression. When you run a simple least squares regression, you get a value for R2. But let's see how can we get a 95% CI for R2.
+
+Examine the DataFrame df with a dependent variable y and two independent variables X1 and X2 using df.head(). We've already fit this regression with statsmodels (sm) using:
+
+reg_fit = sm.OLS(df['y'], df.iloc[:,1:]).fit()
+Examine the result using reg_fit.summary() to find that R2=0.3504. Use bootstrapping to calculate the 95% CI.
+```py
+rsquared_boot, coefs_boot, sims = [], [], 1000
+reg_fit = sm.OLS(df['y'], df.iloc[:,1:]).fit()
+
+# Run 1K iterations
+for i in range(sims):
+    # First create a bootstrap sample with replacement with n=df.shape[0]
+    bootstrap = df.sample(n=df.shape[0], replace=True)
+    # Fit the regression and append the r square to rsquared_boot
+    rsquared_boot.append(sm.OLS(bootstrap['y'],bootstrap.iloc[:,1:]).fit().rsquared)
+
+# Calculate 95% CI on rsquared_boot
+r_sq_95_ci = np.percentile(rsquared_boot, [2.5, 97.5])
+print("R Squared 95% CI = {}".format(r_sq_95_ci))
+```
+
