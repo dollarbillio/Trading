@@ -102,3 +102,60 @@ for i in range(n_sims):
         full_house += 1
 print("Probability of seeing a full house = {}".format(full_house/n_sims))
 ```
+---
+Data Generating Process
+```py
+sims, outcomes, p_rain, p_pass = 1000, [], 0.40, {'sun':0.9, 'rain':0.3}
+
+def test_outcome(p_rain):
+    # Simulate whether it will rain or not
+    weather = np.random.choice(['rain', 'sun'], p=[p_rain, 1-p_rain])
+    # Simulate and return whether you will pass or fail
+    return np.random.choice(['pass', 'fail'], p=[p_pass[weather], 1-p_pass[weather]])
+
+for _ in range(sims):
+    outcomes.append(test_outcome(p_rain))
+
+# Calculate fraction of outcomes where you pass
+pass_outcomes_frac = sum([x == 'pass' for x in outcomes])/len(outcomes)
+print("Probability of Passing the driving test = {}".format(pass_outcomes_frac))
+```
+---
+Suppose the election outcome in each state follows a binomial distribution with probability p such that 0 indicates a loss for Red and 1 indicates a win. We then simulate a number of election outcomes. Finally, we can ask rich questions like what is the probability of Red winning less than 45% of the states?
+```py
+outcomes, sims, probs = [], 1000, p
+
+for _ in range(sims):
+    # Simulate elections in the 50 states
+    election = np.random.binomial(p=probs, n=1)
+    # Get average of Red wins and add to `outcomes`
+    outcomes.append(election.mean())
+
+# Calculate probability of Red winning in less than 45% of the states
+prob_red_wins = sum([(x < 0.45) for x in outcomes])/len(outcomes)
+print("Probability of Red winning in less than 45% of the states = {}".format(prob_red_wins))
+```
+---
+Let's model how activity levels impact weight loss using modern fitness trackers. On days when you go to the gym, you average around 15k steps, and around 5k steps otherwise. You go to the gym 40% of the time. Let's model the step counts in a day as a Poisson random variable with a mean λ dependent on whether or not you go to the gym.
+
+For simplicity, let’s say you have an 80% chance of losing 1lb and a 20% chance of gaining 1lb when you get more than 10k steps. The probabilities are reversed when you get less than 8k steps. Otherwise, there's an even chance of gaining or losing 1lb. Given all this information, find the probability of losing weight in a month.
+```py
+# Simulate steps & choose prob 
+for _ in range(sims):
+    w = []
+    for i in range(days):
+        lam = np.random.choice([5000, 15000], p=[0.6, 0.4], size=1)
+        steps = np.random.poisson(lam)
+        if steps > 10000: 
+            prob = [0.2, 0.8]
+        elif steps < 8000: 
+            prob = [0.8, 0.2]
+        else:
+            prob = [0.5, 0.5]
+        w.append(np.random.choice([1, -1], p=prob))
+    outcomes.append(sum(w))
+
+# Calculate fraction of outcomes where there was a weight loss
+weight_loss_outcomes_frac = sum([x < 0 for x in outcomes])/len(outcomes)
+print("Probability of Weight Loss = {}".format(weight_loss_outcomes_frac))
+```
