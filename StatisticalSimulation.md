@@ -224,3 +224,48 @@ rev_high = get_revenue(get_signups('high', ct_rate, su_rate, sims))
 frac = sum([rev_high[i] - rev_low[i] < cost_diff for i in range(len(rev_low))])/len(rev_low)
 print("Probability of losing money = {}".format(frac))
 ```
+---
+Probability example
+In this exercise, we will review the difference between sampling with and without replacement. We will calculate the probability of an event using simulation, but vary our sampling method to see how it impacts probability.
+
+Consider a bowl filled with colored candies - three blue, two green, and five yellow. Draw three candies at random, with replacement and without replacement. You want to know the probability of drawing a yellow candy on the third draw given that the first candy was blue and the second candy was green.
+```py
+# Set up the bowl
+success_rep, success_no_rep, sims = 0, 0, 10000
+bowl = list('b'*3 + 'g'*2 + 'y'*5)
+
+for i in range(sims):
+    # Sample with and without replacement & increment success counters
+    sample_rep = np.random.choice(bowl, size=3, replace=True)
+    sample_no_rep = np.random.choice(bowl, size=3, replace=False)
+    if (sample_rep[0] == 'b') & (sample_rep[1] == 'g') & (sample_rep[2] == 'y'): 
+        success_rep += 1
+    if (sample_no_rep[0] == 'b') & (sample_no_rep[1] == 'g') & (sample_no_rep[2] == 'y'): 
+        success_no_rep += 1
+
+# Calculate probabilities
+prob_with_replacement = success_rep/sims
+prob_without_replacement = success_no_rep/sims
+print("Probability with replacement = {}, without replacement = {}".format(prob_with_replacement, prob_without_replacement))
+```
+---
+Running a simple bootstrap
+Welcome to the first exercise in the bootstrapping section. We will work through an example where we learn to run a simple bootstrap. As we saw in the video, the main idea behind bootstrapping is sampling with replacement.
+
+Suppose you own a factory that produces wrenches. You want to be able to characterize the average length of the wrenches and ensure that they meet some specifications. Your factory produces thousands of wrenches every day, but it's infeasible to measure the length of each wrench. However, you have access to a representative sample of 100 wrenches. Let's use bootstrapping to get the 95% confidence interval (CI) for the average lengths.
+
+Examine the list wrench_lengths, which has 100 observed lengths of wrenches, in the shell.
+```py
+# Draw some random sample with replacement and append mean to mean_lengths.
+mean_lengths, sims = [], 1000
+for i in range(sims):
+    temp_sample = np.random.choice(wrench_lengths, replace=True, size=len(wrench_lengths))
+    sample_mean = np.mean(temp_sample)
+    mean_lengths.append(sample_mean)
+    
+# Calculate bootstrapped mean and 95% confidence interval.
+boot_mean = np.mean(mean_lengths)
+boot_95_ci = np.percentile(mean_lengths, [2.5, 97.5])
+print("Bootstrapped Mean Length = {}, 95% CI = {}".format(boot_mean, boot_95_ci))
+```
+---
