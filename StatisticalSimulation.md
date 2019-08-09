@@ -159,3 +159,68 @@ for _ in range(sims):
 weight_loss_outcomes_frac = sum([x < 0 for x in outcomes])/len(outcomes)
 print("Probability of Weight Loss = {}".format(weight_loss_outcomes_frac))
 ```
+---
+Sign up Flow
+We will now model the DGP of an eCommerce ad flow starting with sign-ups.
+
+On any day, we get many ad impressions, which can be modeled as Poisson random variables (RV). You are told that λ is normally distributed with a mean of 100k visitors and standard deviation 2000.
+
+During the signup journey, the customer sees an ad, decides whether or not to click, and then whether or not to signup. Thus both clicks and signups are binary, modeled using binomial RVs. What about probability p of success? Our current low-cost option gives us a click-through rate of 1% and a sign-up rate of 20%. A higher cost option could increase the clickthrough and signup rate by up to 20%, but we are unsure of the level of improvement, so we model it as a uniform RV.
+```py
+# Initialize click-through rate and signup rate dictionaries
+ct_rate = {'low':0.01, 'high':np.random.uniform(low=0.01, high=1.2*0.01)}
+su_rate = {'low':0.2, 'high':np.random.uniform(low=0.2, high=1.2*0.2)}
+
+def get_signups(cost, ct_rate, su_rate, sims):
+    lam = np.random.normal(loc=100000, scale=2000, size=sims)
+    # Simulate impressions(poisson), clicks(binomial) and signups(binomial)
+    impressions = np.random.poisson(lam=lam)
+    clicks = np.random.binomial(impressions, p=ct_rate[cost])
+    signups = np.random.binomial(clicks, p=su_rate[cost])
+    return signups
+
+print("Simulated Signups = {}".format(get_signups('high', ct_rate, su_rate, 1)))
+```
+---
+Purchase Flow
+After signups, let's model the revenue generation process. Once the customer has signed up, they decide whether or not to purchase - a natural candidate for a binomial RV. Let's assume that 10% of signups result in a purchase.
+
+Although customers can make many purchases, let's assume one purchase. The purchase value could be modeled by any continuous RV, but one nice candidate is the exponential RV. Suppose we know that purchase value per customer has averaged around $1000. We use this information to create the purchase_values RV. The revenue, then, is simply the sum of all purchase values.
+
+The variables ct_rate, su_rate and the function get_signups() from the last exercise are pre-loaded for you.
+```py
+def get_revenue(signups):
+    rev = []
+    np.random.seed(123)
+    for s in signups:
+        # Model purchases as binomial, purchase_values as exponential
+        purchases = np.random.binomial(s, p=0.1)
+        purchase_values = np.random.exponential(scale=1000, size=purchases)
+        
+        # Append to revenue the sum of all purchase values.
+        rev.append(purchase_values.sum())
+    return rev
+
+print("Simulated Revenue = ${}".format(get_revenue(get_signups('low', ct_rate, su_rate, 1))[0]))
+```
+---
+Probability of losing money
+In this exercise, we will use the DGP model to estimate probability.
+
+As seen earlier, this company has the option of spending extra money, let's say $3000, to redesign the ad. This could potentially get them higher clickthrough and signup rates, but this is not guaranteed. We would like to know whether or not to spend this extra $3000 by calculating the probability of losing money. In other words, the probability that the revenue from the high-cost option minus the revenue from the low-cost option is lesser than the cost.
+
+Once we have simulated revenue outcomes, we can ask a rich set of questions that might not have been accessible using traditional analytical methods.
+
+This simple yet powerful framework forms the basis of Bayesian methods for getting probabilities.
+```py
+# Initialize sims
+sims, cost_diff = 10000, 3000
+
+# Get revenue when the cost is 'low' and when the cost is 'high'
+rev_low = get_revenue(get_signups('low', ct_rate, su_rate, sims))
+rev_high = get_revenue(get_signups('high', ct_rate, su_rate, sims))
+
+# calculate fraction of times rev_high - rev_low is less than cost_diff
+frac = sum([rev_high[i] - rev_low[i] < cost_diff for i in range(len(rev_low))])/len(rev_low)
+print("Probability of losing money = {}".format(frac))
+```
