@@ -141,5 +141,71 @@ rm("second", envir = env)
 ls(env)
 ## [1] "first" "third"
 
+Using theplot()function
+# Create a vector of numbers x and plot them
+x <- c(1, 2, 3.2, 4, 3, 2.1, 9, 19)
+plot(x)
 
+# Convert the graph into a line plot
+plot(x, type = "l")
+
+?plotreveals a few more useful plot types:
+• ''p'' for points
+• ''l'' for lines
+• ''b'' for both
+• ''c'' for the lines part alone of ''b''
+• ''o'' for both overplotted
+• ''h'' for histogram like (or high-density) vertical lines
+• ''s'' for stair steps
+• ''S'' for other steps
+• ''n'' for no plotting
+
+The following example demonstrates the creation of a plot with a main title, axis-labels,
+and a basic grid. A vertical and a horizontal line are also placed on the graph after
+the initial points have been rendered byplot():
+
+# Set up the canvas
+plot(rnorm(1000), main = "Some returns", cex.main = 0.9,
+xlab = "Time", ylab = "Returns")
+# Superimpose a basic grid
+grid()
+# Create a few vertical and horizontal lines
+abline(v = 400, lwd = 2, lty = 1)
+abline(h = 2, lwd = 3, lty = 3)
+
+Further information onv, h, lwd, lty, and other arguments of abline()
+can be found by calling?abline.Thelwdargument defines the line-width, and
+theltyargument defines the line-type.
+
+Thepar()command is used to query or set up global graphical parameters that can be used by all subsequent calls toplot(). The following code splits the view-ing window into a rectangular format with two rows and two columns. Aplot() command can then be issued for each one of the child windows. Lines and text can subsequently be added to each unique child plot:
+
+# Create a 2-row, 2-column format
+par(mfrow = c(2, 2))
+# First plot (points).
+plot(rnorm(100), main = "Graph 1")
+# Second plot (lines).
+plot(rnorm(100), main = "Graph 2", type = "l")
+# Third plot (steps) with a vertical line
+plot(rnorm(100), main = "Graph 3", type = "s")
+abline(v = 50, lwd = 4)
+# Fourth plot
+plot(rnorm(100), type = "h", main = "Graph 4")
+# Reset the plot window
+par(mfrow = c(1, 1))
+
+Here’s how to add some text and a legend to the plot:
+plot(rnorm(100), main = "A line plot",
+cex.main = 0.8,
+xlab = "x-axis",
+ylab = "y-axis",
+type = "l")
+# Extra text
+mtext("Some text at the top", side = 3)
+#Atx=40andy= -1coordinates
+legend(40, -1, "A legend")
+
+Entering
+?plot.default in the console will list what these are. Alternatively, the
+formals()function can be used to extract the arguments of the function:
+formals(plot.default)
 ```
