@@ -120,4 +120,26 @@ size_of_list <- length(my_list)
 size_of_list
 ## [1] 3
 
+Thenew.env()object
+A new environment can be created with thenew.env()command:
+env <- new.env()
+env[["first"]] <- 5
+env[["second"]] <- 6
+env$third <- 7
+
+To obtain the names, we have to
+use thelscommand:
+ls(env)
+## [1] "first" "second" "third"
+To obtain the values associated with those names, we can use the get()
+command:
+get("first", envir = env)
+## 5
+
+Removing elements from an environment is accomplished via therm()com-mand:
+rm("second", envir = env)
+ls(env)
+## [1] "first" "third"
+
+
 ```
