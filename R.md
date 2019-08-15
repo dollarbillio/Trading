@@ -366,5 +366,67 @@ missing_rows
 # Compute correlations
 correlation_matrix <- compute_pairwise_correlations(prices)
 correlation_matrix
+```
+---
+```R
+# Load the .csv file
+aapl_2 <- read.csv(file = "path/aapl.csv", header = TRUE,
+stringsAsFactors = FALSE)
+# Reverse the entries
+aapl_2 <- aapl_2[rev(rownames(aapl_2)), ]
+This time around, we specified that headers are present in the input file. R knows
+to call the columns by their correct names, and if we want to extract the closing-price, the following command suffices:
+aapl_close <- aapl_2[, "Close"]
+To get some quick summary statistics in tabular format, we can utilize the
+summary()function.
+summary(aapl_close)
+## Min. 1st Qu. Median Mean 3rd Qu. Max.
+## 11.00 25.50 40.50 96.29 77.00 702.10
 
+install.packages("quantmod")
+install.packages(pkgs, lib, repos = getOption("repos"),
+contriburl = contrib.url(repos, type),
+method, available = NULL, destdir = NULL,
+dependencies = NA, type = getOption("pkgType"),
+configure.args = getOption("configure.args"),
+configure.vars = getOption("configure.vars"),
+clean = FALSE, Ncpus = getOption("Ncpus", 1L),
+verbose = getOption("verbose"),
+libs_only = FALSE, INSTALL_opts, quiet = FALSE,
+keep_outputs = FALSE, ...)
+
+# Write to csv?
+write.csv(aapl_2, file = "path/aapl_2.csv")
+This file registers as 455 KB on disk.
+save(aapl_2, file = "path/aapl_2.rdata")
+
+aapl_old <- aapl_2
+rm(aapl_2)
+load(file = "path/aapl_2.rdata")
+
+identical(aapl_old, aapl_2)
+## [1] TRUE
+
+library(XLConnect)
+# Create a workbook object
+book <- loadWorkbook("path/strategy.xlsx")
+# Convert it into a data frame
+signals = readWorksheet(book, sheet = "signals", header
+= TRUE)
+
+strength = readWorksheet(book, sheet = "strength", header
+= TRUE)
+
+It is also possible to create a workbook and populate it with data from R.
+# Setup a new spreadsheet
+book <- loadWorkbook("demo_sheet.xlsx", create = TRUE)
+# Create a sheet called stock1
+createSheet(book, name = "stock1")
+# Creating a sheet called stock2
+createSheet(book, name = "stock2")
+# Load data into workbook
+df <- data.frame(a = c(1, 2, 3), b = c(4, 5, 6))
+writeWorksheet (book, data=df, sheet="stock1", header = TRUE)
+# Save the workbook
+saveWorkbook(book, file = "path/demo_sheet.xlsx")
 ```
