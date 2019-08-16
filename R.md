@@ -848,3 +848,72 @@ aes()attribute specifies the aesthetics of how the data will be rendered on the 
 yaxis. Thegeomidiom defines the type of plot to be displayed. The + operator is
 used to concatenate the layers together into a coherent graph.
 ```
+---
+```R
+# Set the seed
+set.seed(100)
+X <- rnorm(1000000, mean = 2.33, sd = 0.5)
+mu <- mean(X)
+sd <- sd(X)
+hist(X, breaks = 100)
+abline(v = mu, lwd = 3, lty = 2)
+
+set.seed(12)
+rnorm(5)
+## [1] -1.4805676 1.5771695 -0.9567445 -0.9200052 -1.9976421
+Runningrnorm(5)againwithout preceding it withset.seed(12)will produce
+a different set of numbers:
+rnorm(5)
+## [1] -0.2722960 -0.3153487 -0.6282552 -0.1064639 0.4280148
+We will create three vectors of size 5, 10, and 50 from X:
+
+sample5 <- sample(X, 5, replace = TRUE)
+sample10 <- sample(X, 10, replace = TRUE)
+sample50 <- sample(X, 50, replace = TRUE)
+sample5
+## [1] 2.497921 2.635927 2.291848 2.127974 2.268268
+sample10
+## [1] 2.064451 2.274464 2.468938 1.800007 2.557669
+## [6] 2.535241 1.331020 1.159151 1.661762 2.285889
+sample50
+## [1] 2.581844 2.138331 3.003670 1.864148 2.049141
+## [6] 2.808971 1.400057 2.527640 3.639216 3.311873
+mean(sample5)
+## [1] 2.364388
+mean(sample10)
+## 2.013859
+mean(sample50)
+## 2.447003
+mean(sample(X, 1000, replace = TRUE))
+## 2.323124
+mean(sample(X, 10000, replace = TRUE))
+## [1] 2.334109
+
+This example will build on the previous one. This time, we will take repeated
+measurements from X, but we will keep the sample size the same:
+mean_list <- list()
+for(i in 1:10000) {
+mean_list[[i]] <- mean(sample(X, 10, replace = TRUE))
+}
+hist(unlist(mean_list), breaks = 500,xlab = "Mean of 10 samples from X",
+main = "Convergence of sample distribution",
+cex.main = 0.8)
+abline(v = mu, lwd = 3, col = "white", lty = 2)
+
+The distribution of the sample averages converges to a normal-looking distribu-tion! To see how powerful theCentral Limit Theoremis, consider a population
+that is highly nonnormal. We can create such a population by repeatedly picking
+eithera0or a1with a50percentprobability:
+population <- sample(c(0, 1), 100000, replace = TRUE)
+hist(population, main = "Non-normal", cex.main = 0.8)
+abline(v = mean(population), lwd = 3, lty = 3)
+By repeatedly extracting samples of size 10 from this highly nonnormal distribu-tion, we still obtain a normal-looking distribution for the sample means:
+mean_list <- list()
+for(i in 1:10000) {
+mean_list[[i]] <- mean(sample(population, 10, replace = TRUE))
+}
+hist(unlist(mean_list), main = "Distribution of averages",
+cex.main = 0.8,
+xlab = "Average of 10 samples")
+abline(v = 0.5, lwd = 3)
+
+```
