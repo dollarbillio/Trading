@@ -430,3 +430,421 @@ writeWorksheet (book, data=df, sheet="stock1", header = TRUE)
 # Save the workbook
 saveWorkbook(book, file = "path/demo_sheet.xlsx")
 ```
+---
+```R
+# Load the RODBC package
+require(RODBC)
+# Establish a connection to MySQL
+con <- odbcConnect("rfortraders")
+# Choose the database name and table name
+database_name <- "OptionsData"
+table_name <- "ATMVolatilities"
+symbol <- "SPY"
+sql_command <- paste0("SELECT Symbol, Date, Maturity,Delta, CallPut, ImpliedVolatility FROM ",
+database_name, ".", table_name,
+" WHERE Maturity = 91
+AND Symbol IN ('", symbol, "');")
+iv <- sqlQuery(con, sql_command)
+# disconnect from database
+odbcClose(con)
+
+The above SQL-query extracts the implied volatilities of a 91-daymaturity option
+for the SPY ETF for an arbitrary number of days.
+
+TheRMySQLpackage provides similar functionality to theRODBCone. It is
+custom tailored to MySQL, and many practitioners who work with such databases
+prefer to use this package instead. Here is some code that establishes a connection
+to the local instance, extracts the data in the form of a data frame, and then, closes
+the connection:
+# Load the necessary package
+require(RMySQL)
+# Establish a connection
+con <- dbConnect(MySQL(), user="your_login",
+password="your_password",
+dbname="OptionsData",
+host="location_of_database")
+# List the tables and fields
+dbListTables(con)
+# Define the command and extract a data frame
+sql_command <- paste0("SELECT Symbol, Date, Maturity,
+Delta, CallPut, ImpliedVolatility FROM ",database_name, ".", table_name,
+" WHERE Maturity = 91
+AND Symbol IN ('", symbol, "');")
+result <- dbGetQuery(con, sql_command)
+# Close the connection
+dbDisconnect(con)
+It is also possible to extract the tabular data in chunks if the data is voluminous.
+results <- dbSendQuery(con, sql_command)
+partial_results <- fetch(results, n = 100)
+
+Thedplyrpackage
+# Get the CRAN version
+install.packages("dplyr")
+require(dplyr)
+# Or, first load devtools
+install.packages("devtools")
+require(devtools)
+# Get the github version
+devtools::install_github("hadley/dplyr")
+require(dplyr)
+
+Here are some important commands to be aware of when dealing withdplyr:
+• tbl()
+• groupby()
+• summarise()
+• do()
+• %>%
+
+core functionality and will utilize a
+data set that is part of thedplyrinstallation
+# Load the flight database that comes with dplyr
+library(hflights)
+# Look at number of rows and columns
+dim(hflights)
+## [1] 227496 21
+
+We could have easily coerced the data into a data frame instead.
+# First, coerce the data into a data.table
+flights_dt <- tbl_dt(hflights)
+# What type of object is this?
+class(flights_dt)
+## [1] "tbl_dt" "tbl" "data.table" "data.frame"
+
+To find the median arrival delay time for all carriers, we begin by grouping the
+data by carrier:
+# Create a grouping by carrier
+carrier_group <- group_by(flights_dt, UniqueCarrier)
+# Now compute the summary statistics
+summarise(carrier_group, avg_delay = mean(ArrDelay, na.rm = TRUE))
+
+The execution time for the aggregate summary is on the order ten milliseconds.
+This is pretty fast indeed. Here is what the summary looks like in Table 3.2.
+Thedo()function allows one to apply an arbitrary function to a group of data.
+The%>%operator can be used to chain the results together. An example of this can
+be seen by typing?doin the R console.
+
+# load the library xts
+library(xts)
+
+# Load a small dataset that comes along with xts.
+# We could have used our original .csv file as well.
+
+data(sample_matrix)
+# Look at the data
+head(sample_matrix)
+## [1] "matrix"
+# What is the type of this object?
+class(sample_matrix)
+## [1] "matrix"
+# Use the str() command to get more details about this object.
+str(sample_matrix)
+## num [1:180, 1:4] 50 50.2 50.4 50.4 50.2 ...
+## - attr(*, "dimnames")=List of 2
+## ..$ : chr [1:180] "2007-01-02" "2007-01-03"
+## "2007-01-04" "2007-01-05" ...
+## ..$ : chr [1:4] "Open" "High" "Low" "Close"
+
+The output fromstr()can be somewhat daunting. It is telling us that thematrix
+has 180 rows and 4 columns. It is also displaying that the row names equal the dates
+and that the column names equal the strings: "Open", "High", "Low", and "Close".
+We can take this data and convert it into anxtsobject.Totheuser,everythingwill
+look the same as before. Underneath the hood, though, R will be doing some pretty
+neat indexing.
+
+xts_matrix<-as.xts(sample_matrix, descr ='my new xts object')
+
+str(xts_matrix}
+## An 'xts' object on 2007-01-02/2007-06-30 containing:
+## Data: num [1:180, 1:4] 50 50.2 50.4 50.4 50.2 ...
+## - attr(*, "dimnames")=List of 2
+## ..$ : NULL
+## ..$ : chr [1:4] "Open" "High" "Low" "Close"
+## Indexed by objects of class: [POSIXct,POSIXt] TZ:
+## xts Attributes:
+## List of 3
+## $ tclass: chr [1:2] "POSIXct" "POSIXt"
+## $ tzone : chr ""
+## $ descr : chr "my new xts object"
+
+Theplot()function knows that it is now dealing
+with anxtsinput object and, as such, will produce a different graphical layout. This
+is polymorphic
+11
+behavior in action.
+# Simple plot
+plot(xts_matrix[,1], main = "Our first xts plot",
+cex.main = 0.8)
+# Or we can try something fancier.
+plot(xts_matrix, main = "Candle plot on xts object",
+cex.main = 0.8, type = "candles")
+
+Given that we
+want to plot the price of a stock between two dates, how can this be accomplished?
+Here are some examples:
+plot(xts_matrix["2007-01-01::2007-02-12"],
+main = "An xts candle plot with subsetting",
+cex.main = 0.8, type = "candles")
+
+Notice the single string argument that is passed to the price matrix. This
+time-based formatting makes it easy to work with human readable dates as time
+boundaries.
+range <- "2007-03-15::2007-06-15"
+plot(xts_matrix(range))
+
+Thepaste()function is useful for concatenating strings together. It takes the
+input arguments and pastes them together. By default, it will separate the strings
+with a space, unless one specifiessep = "".
+start_date <- "2007-05-05"
+end_date <- "2007-12-31"
+plot(xts_matrix[paste(start_date, "::",
+end_date, sep = "")])
+# Defaults to space separator
+paste("Hello", "World", "in R")
+## [1] "Hello World in R"
+paste("Hello", "Again", sep = "**")
+## [1] "Hello**Again"
+
+A vector of strings can be pasted together with a specified separator between the
+elements of the vector as follows:
+paste(c(1,2,3,4,5), collapse = "oooo")
+## [1] "1oooo2oooo3oooo4oooo5"
+
+In most
+cases, the user has to specify what format the time index is in.
+Here is an example that illustrates this point:
+
+# Create a vector of 10 fictitious stock prices along with
+# a time index in microsecond resolution.
+price_vector <- c(101.02, 101.03, 101.03, 101.04, 101.05,
+101.03, 101.02, 101.01, 101.00, 100.99)
+dates <- c("03/12/2013 08:00:00.532123",
+"03/12/2013 08:00:01.982333",
+"03/12/2013 08:00:01.650321",
+"03/12/2013 08:00:02.402321",
+"03/12/2013 08:00:02.540432",
+"03/12/2013 08:00:03.004554",
+"03/12/2013 08:00:03.900213",
+"03/12/2013 08:00:04.050323",
+"03/12/2013 08:00:04.430345",
+"03/12/2013 08:00:05.700123")
+
+# Allow the R console to display the microsecond field
+options(digits.secs = 6)
+# Create the time index with the correct format
+time_index <- strptime(dates, format = "%d/%m/%Y %H:%M:%OS")
+
+# Pass the time index into the its object
+xts_price_vector <- xts(price_vector, time_index)
+
+Theoptions(digits.secs)command controls themaximumnumber of dig-its to print on the screen when formatting time values in seconds. This will ensure
+that the microseconds in the time stamp show up when the xtspricevector
+is referenced in the console.
+
+ The strptime()function takes a string or a vector
+of strings as an input and converts them into the specified format. One important
+thing to keep in mind is that the specified time stamp has microsecond resolution.
+Therefore, a %OS symbol, and not %S (seconds), is required at the end of the time
+format. The documentation on?strptimeincludes specific formatting details.
+
+Given a perfectly validxtstime series object, we can plot it and also add some
+vertical and horizontal lines as we have done before. The vertical line can now be
+indexed by the time stamp. The only tricky part with the vertical line is that we have
+to define what format the time stamp is in. This can be done via theas.POSIXct()
+function.
+
+# Plot the price of the fictitious stock
+plot(xts_price_vector, main = "Fictitious price series",
+cex.main = 0.8)
+# Add a horizontal line where the mean value is
+abline(h = mean(xts_price_vector), lwd = 2)
+# Add a vertical blue line at a specified time stamp
+my_time <- as.POSIXct("03/12/2013 08:00:03.004554",
+format = "%d/%m/%Y %H:%M:%OS")
+abline(v = my_time, lwd = 2, lty = 2)
+
+To extract the data component of the price vector, we can use thecoredata()
+command. The following example looks at manipulating the time index directly.
+To motivate this example, we will create a nonhomogeneous time series. Nonho-mogeneity in time is something that is encountered a lot in practice. Important
+events tend to arrive at irregular time intervals. Take, for example, a subset of trades
+on the S&P 500 E-mini (ES) futures contract within a specified time interval. It
+might look something like this:
+es_price <- c(1700.00, 1700.25, 1700.50, 1700.00, 1700.75,
+1701.25, 1701.25, 1701.25, 1700.75, 1700.50)
+es_time <- c("09/12/2013 08:00:00.532123",
+"09/12/2013 08:00:01.982333",
+"09/12/2013 08:00:05.650321",
+"09/12/2013 08:10:02.402321",
+"09/12/2013 08:12:02.540432",
+"09/12/2013 08:12:03.004554",
+"09/12/2013 08:14:03.900213",
+"09/12/2013 08:15:07.090323",
+"09/12/2013 08:16:04.430345",
+"09/12/2013 08:18:05.700123")
+# create an xts time series object
+xts_es <- xts(es_price, as.POSIXct(es_time,
+format = "%d/%m/%Y %H:%M:%OS"))
+names(xts_es) <- c("price")
+
+Onemetric of interest that comes up in high-frequency trading is the trade order-arrival rate. We can explore this metric by looking at the successive differences in
+time stamps between trades. Thedifftime()function computes the time differ-ence between two date-time objects. This example sets the time unit explicitly to
+seconds. The default setting also happens to be the same.
+time_diff <- difftime(index(xts_es)[2], index(xts_es)[1],
+units = "secs")
+time_diff
+## Time difference of 1.45021 secs
+
+We can create a loop that will go through all the pairs and then store the results
+in a vector.
+diffs <- c()
+
+for(i in 2:length(index(xts_es))) {
+diffs[i] <- difftime(index(xts_es)[i], index(xts_es)[i - 1],
+units = "secs")
+}
+This will certainly work, but it is not the optimal way to obtain the answer. Here
+is a vectorized solution:
+diffs <- index(xts_es)[-1] - index(xts_es)[-length(index(xts_es))]
+diffs
+## Time differences in secs
+## [1] 1.4502099 3.6679881 596.7520001
+## [4] 120.1381109 0.4641221 120.8956590
+## [7] 63.1901100 57.3400221 121.2697780
+## attr(,"tzone")
+
+class(diffs)
+## [1] "difftime"
+
+The above line of code can further be optimized by calling theindex()function
+once instead of three times.
+es_times <- index(xts_es)
+diffs <- es_times[-1] - es_times[-length(es_times)]
+diffs
+## Time differences in secs
+## [1] 1.4502099 3.6679881 596.7520001
+## [4] 120.1381109 0.4641221 120.8956590
+## [7] 63.1901100 57.3400221 121.2697780
+## attr(,"tzone")
+We can also generate a graphical representation of the the time differences
+between consecutive trades for our fictitious ES future time series.
+par(mfrow = c(2, 1))
+diffs <- as.numeric(diffs)
+plot(diffs, main = "Time difference in seconds for ES trades",
+xlab = "", ylab = "Time differences",
+cex.lab = 0.8,
+cex.main = 0.8)
+grid()
+hist(diffs, main = "Time difference in seconds for ES trades",
+
+xlab = "Time difference (secs)", ylab = "Observations",
+breaks = 20,
+cex.lab = 0.8,
+cex.main = 0.8)
+grid()
+```
+---
+Using the quantmod package
+```R
+Thequantmodpackage provides online and offline access to financial data inxts
+format. It also provides facilities for creating intricate graphs tailored to financial
+data.
+Here is howwe can extract some Apple stock data from Yahoo.
+# Load the quantmod packages after installing it locally.
+library(quantmod)
+AAPL <- getSymbols("AAPL", auto.assign=FALSE)
+head(AAPL)
+
+Theauto.assignparameter allows for the returned object to be stored in a local
+variable rather than the R session’s.GlobalEnv. Some of the other arguments to
+getSymbols()are:src,time,andverbose.
+Thesrcargument specifies the source of the input data. It can be set to extract
+information from sources such as:
+• Yahoo
+• Google
+• Fred
+• Oanda
+• mysql
+• .csv files
+The time argument can be of the form ''2011/'' or ''2010-08-09::2010-08-12''.
+
+Charting withquantmod
+ThechartSeriesfunction can be directly applied to anxtsobject with open, high,
+low, and close data. There are many arguments to chartSeriesthat can assist in
+the further customization of a chart. As usual, we can reference ?chartSeries
+for more information. Using our previously created AAPL object, this is what the
+function outputs:
+# Adding some technical indicators on top of the original plot
+chartSeries(AAPL, subset='2010::2010-04',
+theme = chartTheme('white'),
+TA = "addVo(); addBBands()")
+ThereChart()function can be used to update the original chart without
+specifying the full set of arguments:
+reChart(subset='2009-01-01::2009-03-03')
+Thequantmodpackage exposes a range of technical indicators that can seam-lessly be added on top of any chart. These technical indicators reside within theTTR
+package that was authored by Josh Ulrich [59].TTRis one of those dependencies
+that is automatically loaded during thequantmodinstallation process.
+chartSeries(AAPL, subset='2011::2012',
+theme = chartTheme('white'),
+TA = "addBBands(); addDEMA()")
+
+Technical indicators can also be invoked after the chart has been drawn by using
+addVo()
+addDPO()
+
+Two more functions that are definitely worth exploring are addTA()and
+newTA(). These allow the creation of custom indicators that can be rendered in
+a subchart or overlaid onto the main plot.
+In this next example, we will plot the price of AAPL without any technical indica-tors, and thenwe will create a custom indicator that uses the close price of the stock.
+The custom indicator simply adds 90 to the existing price. One can, of course, use
+this method to create arbitrarily complex indicators.
+# Initial chart plot with no indicators
+chartSeries(AAPL, theme = chartTheme('white'), TA = NULL)
+# Custom function creation
+my_indicator <- function(x) {
+return(x + 90)
+}
+
+add_my_indicator <- newTA(FUN = my_indicator, preFUN=Cl,
+legend.name = "My Fancy Indicator", on = 1)
+add_my_indicator()
+```
+---
+ggplot2
+```R
+In order to illustrate some of the functionality ofggplot2, we will create a plot of
+the volume distribution of AAPL for varying levels of percentage returns:
+# Create a matrix with price and volume
+df <- AAPL[, c("AAPL.Adjusted", "AAPL.Volume")]
+names(df) <- c("price", "volume")
+
+# Create
+df$return <- diff(log(df[, 1]))
+df <- df[-1, ]
+Next, we will use thecut()function to create buckets of returns. We are specifi-cally interested in themagnitude of the returns. A total of three buckets will be used
+for this demonstration:
+df$cuts <- cut(abs(df$return),
+breaks = c(0, 0.02, 0.04, 0.25),
+include.lowest = TRUE)
+# Create another column for the mean
+df$means <- NA
+for(i in 1:3) {
+group <- which(df$cuts == i)
+if(length(group) > 0) {
+df$means[group] <- mean(df$volume[group])
+}
+}
+
+Figure 4.13 displays the contents of our objectdf.
+Buckets labeled as 1, group together the lowest returns, whereas buckets with the
+value of 3, include the highest returns. All other returns fall somewhere in-between.
+We want to graph the distribution of the volume for each of these buckets.
+# Load ggplot2
+library(ggplot2)
+ggplot(df) +
+geom_histogram(aes(x=volume)) +
+facet_grid(cuts ~ .) +
+geom_vline(aes(xintercept=means), linetype="dashed", size=1)
+Upon initial inspection,ggplot2syntax can appear somewhat confusing. The
+aes()attribute specifies the aesthetics of how the data will be rendered on the x or
+yaxis. Thegeomidiom defines the type of plot to be displayed. The + operator is
+used to concatenate the layers together into a coherent graph.
+```
