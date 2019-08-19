@@ -1054,6 +1054,104 @@ hist(prices, breaks = 100, prob=T, cex.main = 0.9)
 abline(v = mean_prices, lwd = 2)
 legend("topright", cex = 0.8, border = NULL, bty = "n",
 paste("mean=", mean_prices, "; sd=", sd_prices))
+```
+---
+```R
+We can take a look at a similar price distribution, but this time, over a different
+time range.
+plot_4_ranges <- function(data, start_date, end_date, title){
+# Set the plot window to be 2 rows and 2 columns
+par(mfrow = c(2, 2))
+for(i in 1:4) {
+# Create a string with the appropriate date range
+range <- paste(start_date[i], "::", end_date[i], sep = "")
+# Create the price vector and necessary statistics
+time_series <- data[range]
+mean_data <- round(mean(time_series, na.rm = TRUE), 3)
+sd_data <- round(sd(time_series, na.rm = TRUE), 3)
+# Plot the histogram along with a legend
+hist_title <- paste(title, range)
+hist(time_series, breaks = 100, prob=TRUE,
+xlab = "", main = hist_title, cex.main = 0.8)
+legend("topright", cex = 0.7, bty = 'n',
+paste("mean=", mean_data, "; sd=", sd_data))
+}
+# Reset the plot window
+par(mfrow = c(1, 1))
+}
+Having defined the function, we can now use it as follows:
+# Define start and end dates of interest
+begin_dates <- c("2007-01-01", "2008-06-06",
+"2009-10-10", "2011-03-03")
+end_dates <- c("2008-06-05", "2009-09-09",
+"2010-12-30", "2013-01-06")
+# Create plots
+plot_4_ranges(prices, begin_dates,
+end_dates, "SPY prices for:")
 
+# Compute log returns
+returns <- diff(log(prices))
+# Use the same function as before to plot returns rather
+than prices
+plot_4_ranges(returns, begin_dates, end_dates, "SPY log
+prices for:")
+```
+---
+Stationary test
+```R
+# Get SPY data and let's confirm that it is non-stationary
+require(quantmod)
+getSymbols("SPY")
+spy <- SPY$SPY.Adjusted
+# Use the default settings
+require(urca)
+test <- ur.kpss(as.numeric(spy))
+# The output is an S4 object
+class(test)
 
+spy_returns <- diff(log(spy))
+# Test on the returns
+test_returns <- ur.kpss(as.numeric(spy_returns))
+test_returns@teststat
+## [1] 0.336143
+test_returns@cval
+## 10pct 5pct 2.5pct 1pct
+## critical values 0.347 0.463 0.574 0.739
+
+--> doesn't reject null --> Here we cannot reject the null hypothesis that we have a stationary time series.
+
+We can try to superimpose such a normal distribution onto our empirical daily
+return data and see what that looks like.We start by generating random numbers
+that are normally distributed with the same mean and standard deviation as that
+of our stock returns. The two plots can then be superimposed via the following R
+code:
+# Plot histogram and density
+mu <- mean(returns, na.rm = TRUE)
+sigma <- sd(returns, na.rm = TRUE)
+x <- seq(-5 * sigma, 5 * sigma, length = nrow(returns))
+hist(returns, breaks = 100,
+main = "Histogram of returns for SPY",
+cex.main = 0.8, prob=TRUE)
+lines(x, dnorm(x, mu, sigma), col = "red", lwd = 2)
+
+Thednorm()function creates a normal distribution given a range of x values, a
+mean, and a standard deviation. Thelines()function creates a line plot on top of
+the existing histogram plot.
+
+Another way to visualize the difference between the empirical data at hand and
+a theoretical normal distribution is via theqqnorm()andqqline()functions.
+Using the same data as before
+# Set plotting window
+par(mfrow = c(1, 2))
+# SPY data
+qqnorm(as.numeric(returns),
+main = "SPY empirical returns qqplot()",
+cex.main = 0.8)
+qqline(as.numeric(returns), lwd = 2)
+grid()
+# Normal random data
+normal_data <- rnorm(nrow(returns), mean = mu, sd = sigma)
+qqnorm(normal_data, main = "Normal returns", cex.main = 0.8)
+qqline(normal_data, lwd = 2)
+grid()
 ```
