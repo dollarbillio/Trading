@@ -1174,5 +1174,13 @@ head(sv)
 ## 2009-02-03 0.013949240 -0.047941603
 ## 2009-02-04 -0.004908132 0.003716543
 ## 2009-02-05 0.014770965 -0.006134680
-
+```
+---
+```R
+# Find the outliers
+outliers <- which(sv[, 2] > 1.0)
+# If any outliers exist, remove them
+if(length(outliers) > 0) {
+sv <- sv[-outliers, ]
+}
 ```
