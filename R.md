@@ -1155,3 +1155,24 @@ qqnorm(normal_data, main = "Normal returns", cex.main = 0.8)
 qqline(normal_data, lwd = 2)
 grid()
 ```
+---
+```R
+The Shapiro test, for example, is run by providing the raw returns to the
+shapiro.test()function as an argument. The resulting p-value
+4
+is a proba-bility of sorts that specifies the likelihood of the data originating from a normal
+distribution.
+answer <- shapiro.test(as.numeric(returns))
+answer[[2]]
+## [1] 5.118396e-34
+
+# Correlation
+sv <- as.xts(returns_matrix[, c(1, 6)])
+head(sv)
+## SPY.Close VXX.Close
+## 2009-02-02 -0.003022794 -0.003160468
+## 2009-02-03 0.013949240 -0.047941603
+## 2009-02-04 -0.004908132 0.003716543
+## 2009-02-05 0.014770965 -0.006134680
+
+```
