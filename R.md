@@ -1029,5 +1029,31 @@ average_sample_variance <- mean(sample_variance_estimates)
 average_sample_variance
 ## [1] 836184961
 
+# Draw the graph
+plot(c(-1, 1), c(0.5, 0.5), type = "h", lwd = 3,
+xlim = c(-2, 2), main = "Probability mass function of coin
+toss",
+ylab = "Probability",
+xlab = "Random Variable",
+cex.main = 0.9)
+```
+---
+```R
+outcomes <- sample(c(0, 1), 1000, replace = TRUE)
+
+set.seed(101)
+biased_outcomes <- sample(c(0, 1), 1000,
+replace = TRUE, prob = c(0.4, 0.6))
+
+# Extract prices and compute statistics
+prices <- SPY$SPY.Adjusted
+mean_prices <- round(mean(prices), 2)
+sd_prices <- round(sd(prices), 2)
+# Plot the histogram along with a legend
+hist(prices, breaks = 100, prob=T, cex.main = 0.9)
+abline(v = mean_prices, lwd = 2)
+legend("topright", cex = 0.8, border = NULL, bty = "n",
+paste("mean=", mean_prices, "; sd=", sd_prices))
+
 
 ```
