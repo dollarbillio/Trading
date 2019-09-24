@@ -11,3 +11,9 @@
 * Create ```Volume Scan``` and ```Volume %```
 * Shares price decrease after stock issues/Share buybacks = good issue
 * Dollar Volatility
+---
+### VSA:
+* There are ```Weak``` and ```Strong``` holders
+* Before Bull Market, ```Weak``` sell, ```Strong``` buy | Before Bear Market, ```Strong``` sell and ```Weak``` buy. If stocks act at the same time, we have the whole market operate in a synthetic manner
+* ```High volume```: present of ```Sellers``` -> In the downtrend: Sign of Strength | In the Uptrend: Sign of Weakness
+* ```Sellers``` owns the stocks, ```Buyers``` may/may not want to own the stock
