@@ -13,9 +13,19 @@
 * Shares price decrease after stock issues/Share buybacks = good issue
 * Dollar Volatility
 * Approaching old support/resistance, watch for ```volume expansion/contraction```. Compare volume across time at the same area
+* Create quantile ranking in ```% return``` and ```% volume``` and ```other things related```
+* Create ```Close``` at ```High, Middle, Low```
+* Create: ```Up``` and ```Down``` based on ```Open``` and ```Close```
+* Create: ```Up``` and ```Down``` based on ```Previous Close``` and ```Today Close``` 
+* Create ```Point and Figure``` chart
 ---
 ### VSA:
-* There are ```Weak``` and ```Strong``` holders
+* ```Accumulate```: Buy as much as possible without significantly putting the price up against own buying, until less shares => reduce the selling pressures now and ```selling``` in the ```mark-up```, ```removing resistance```. ```Buying``` happens when whole market (index) ```Selling```
 * Before Bull Market, ```Weak``` sell, ```Strong``` buy | Before Bear Market, ```Strong``` sell and ```Weak``` buy. If stocks act at the same time, we have the whole market operate in a synthetic manner
+* There are ```Weak``` and ```Strong``` holders
 * ```High volume```: present of ```Sellers``` -> In the downtrend: Sign of Strength | In the Uptrend: Sign of Weakness
 * ```Sellers``` owns the stocks, ```Buyers``` may/may not want to own the stock
+* ```Daily Spread Low``` + ```High Volume```: Lots of supply over head
+* ```Distribute```: Price is support at higher price so that ```Smart Money``` sell into rally. Once most holdings are sold, bear market begins
+* ```Shake-out```: ```Mark down```, ```wide spread```, ```close up on the high```. If ```Low Volume```: supply dries up. If ```High Volume```: Demand overcomes supply, but this high volume will hinder at next rally
+
