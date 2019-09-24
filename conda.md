@@ -1,4 +1,4 @@
-* Conda is library used to update other library
+* Conda is library used to update other libraries
 ```
 conda update conda
 conda activate py36
