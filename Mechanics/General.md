@@ -1,6 +1,7 @@
 * Never rationalize a loss
 * After a ```big spike up```, look for ```consolidation, tight range, small candle, less wick```
 * If market ```gap up```, wait for confirmation. If stock fails to open higher than gap -> ```exit```
+* If market ```gap down```: Weakness. If ```High Volume```: ```Climatic```: could be start of accumulation
 * If market close ```@Low``` -> hard to expect good rally tmr
 * Stock rise because of news, but look for ```price action``` first, then ```news later```
 * Buy At ```Market Close```, Sell at ```Market Open```
@@ -20,6 +21,8 @@
 * Create ```Point and Figure``` chart
 ---
 ### VSA:
+* Focus on ```Ultra High``` and ```Ultra Low``` volume
+* ```Strength``` in ```Down bar```, ```Weakness``` in ```Up bar```
 * ```Accumulate```: Buy as much as possible without significantly putting the price up against own buying, until less shares => reduce the selling pressures now and ```selling``` in the ```mark-up```, ```removing resistance```. ```Buying``` happens when whole market (index) ```Selling```
 * Before Bull Market, ```Weak``` sell, ```Strong``` buy | Before Bear Market, ```Strong``` sell and ```Weak``` buy. If stocks act at the same time, we have the whole market operate in a synthetic manner
 * There are ```Weak``` and ```Strong``` holders
@@ -27,5 +30,9 @@
 * ```Sellers``` owns the stocks, ```Buyers``` may/may not want to own the stock
 * ```Daily Spread Low``` + ```High Volume```: Lots of supply over head
 * ```Distribute```: Price is support at higher price so that ```Smart Money``` sell into rally. Once most holdings are sold, bear market begins
-* ```Shake-out```: ```Mark down```, ```wide spread```, ```close up on the high```. If ```Low Volume```: supply dries up. If ```High Volume```: Demand overcomes supply, but this high volume will hinder at next rally
+---
+* ```Shake-out```: ```Mark down```, ```wide spread```, ```close up on the high```. 
+If ```Low Volume```: supply dries up | ```Low Volume``` test: violent test. Expect next rally
+If ```High Volume```: Demand overcomes supply, but this high volume will hinder at next rally. | ```High Volume``` test: ok but expect ```test again``` at that area.
+```
 
