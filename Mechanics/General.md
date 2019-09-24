@@ -32,7 +32,7 @@
 * ```Distribute```: Price is support at higher price so that ```Smart Money``` sell into rally. Once most holdings are sold, bear market begins
 ---
 * ```Shake-out```: ```Mark down```, ```wide spread```, ```close up on the high```. 
-If ```Low Volume```: supply dries up | ```Low Volume``` test: violent test. Expect next rally
+If ```Low Volume```: supply dries up | ```Low Volume``` test: violent test, expect next rally.
 If ```High Volume```: Demand overcomes supply, but this high volume will hinder at next rally. | ```High Volume``` test: ok but expect ```test again``` at that area.
-```
+
 
