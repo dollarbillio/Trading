@@ -5,12 +5,14 @@
 * Stock rise because of news, but look for ```price action``` first, then ```news later```
 * Buy At ```Market Close```, Sell at ```Market Open```
 * If stock moves sharply over the prvs few day --> a greater deal of room for price to fall
+* Trade at ```retest```, not middle of trading range
 ---
 ### Technicals: 
 * ```52 weeks/26 weeks/13 weeks/7 weeks``` breakout
 * Create ```Volume Scan``` and ```Volume %```
 * Shares price decrease after stock issues/Share buybacks = good issue
 * Dollar Volatility
+* Approaching old support/resistance, watch for ```volume expansion/contraction```. Compare volume across time at the same area
 ---
 ### VSA:
 * There are ```Weak``` and ```Strong``` holders
