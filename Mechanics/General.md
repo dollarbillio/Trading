@@ -1,4 +1,5 @@
 * Never rationalize a loss
+* Never buy a stock with Dividend
 * After a ```big spike up```, look for ```consolidation, tight range, small candle, less wick```
 * If market ```gap up```, wait for confirmation. If stock fails to open higher than gap -> ```exit```
 * If market ```gap down```: Weakness. If ```High Volume```: ```Climatic```: could be start of accumulation
@@ -10,6 +11,7 @@
 ---
 ### Technicals: 
 * ```52 weeks/26 weeks/13 weeks/7 weeks``` breakout
+* Draw ```performance chart```
 * Create ```Volume Scan``` and ```Volume %```
 * Shares price decrease after stock issues/Share buybacks = good issue
 * Dollar Volatility
@@ -34,5 +36,9 @@
 * ```Shake-out```: ```Mark down```, ```wide spread```, ```close up on the high```. 
 If ```Low Volume```: supply dries up | ```Low Volume``` test: violent test, expect next rally.
 If ```High Volume```: Demand overcomes supply, but this high volume will hinder at next rally. | ```High Volume``` test: ok but expect ```test again``` at that area.
+---
+### Profit and Stoploss
+* Never lose 10% on a stock
+* Never lose 20% of profit
 
 
