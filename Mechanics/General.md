@@ -13,7 +13,7 @@
 * ```52 weeks/26 weeks/13 weeks/7 weeks``` breakout
 * Draw ```performance chart```
 * Create ```Volume Scan``` and ```Volume %```
-* Shares price decrease after stock issues/Share buybacks = good issue
+* Shares price decrease after stock issues | Share buybacks = good issue
 * Dollar Volatility
 * Approaching old support/resistance, watch for ```volume expansion/contraction```. Compare volume across time at the same area
 * Create quantile ranking in ```% return``` and ```% volume``` and ```other things related```
@@ -21,6 +21,8 @@
 * Create: ```Up``` and ```Down``` based on ```Open``` and ```Close```
 * Create: ```Up``` and ```Down``` based on ```Previous Close``` and ```Today Close``` 
 * Create ```Point and Figure``` chart
+* Create ```Spread Point``` statistics for individual stocks
+* ```Individual stock```: Bar: up/down, close: high/middle/low, vol: low/high, spread: narrow/high, change: narrow/high
 ---
 ### VSA:
 * Focus on ```Ultra High``` and ```Ultra Low``` volume
@@ -36,6 +38,9 @@
 * ```Shake-out```: ```Mark down```, ```wide spread```, ```close up on the high```. 
 If ```Low Volume```: supply dries up | ```Low Volume``` test: violent test, expect next rally.
 If ```High Volume```: Demand overcomes supply, but this high volume will hinder at next rally. | ```High Volume``` test: ok but expect ```test again``` at that area.
+* ```Test```: A large trader accumulating individual stock can ```mark price down with confidence``` but hard to ```mark price up without losing money```
+* ```No selling pressure```: price drop on low volume (lower than 2 previous), low spread, price close at middle/high
+* ```No Demand```: narrow spread, volume less than 2 previous
 ---
 ### Profit and Stoploss
 * Never lose 10% on a stock
