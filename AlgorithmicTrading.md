@@ -13,3 +13,6 @@ https://wilmott.com/poker-as-a-lottery-wilmott-magazine-article-frederik-herzber
 Introduction to Computation and Programming Using Python_ With Application to Understanding Data
 
 http://www.quantiacs.com/Data/Quantiacs_Reading_List.pdf
+
+**Taylor Trading Technique
+http://www.traderslaboratory.com/forums/topic/1694-taylor-trading-technique
