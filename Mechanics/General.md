@@ -9,6 +9,7 @@
 * Buy At ```Market Close```, Sell at ```Market Open```
 * If stock moves sharply over the prvs few day --> a greater deal of room for price to fall
 * Trade at ```retest```, not middle of trading range
+* Trade can be trend/countertrend. Each will make money in a different environment except that you have trend/countertrend environment.
 ---
 ### Technicals: 
 * ```52 weeks/26 weeks/13 weeks/7 weeks``` breakout
