@@ -1,3 +1,9 @@
+---
+### On Volatility
+* Volatility has: Volatility Measure, Reference Value
+* Change all return% into percentile
+
+---
 * Avoid large drawdowns and recover from it quickly if you want to stay in business. Trading is a game of capital preservation.
 * Never rationalize a loss
 * Never buy a stock with Dividend
