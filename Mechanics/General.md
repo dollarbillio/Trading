@@ -1,4 +1,3 @@
----
 ### On Volatility
 * Volatility has: Volatility Measure, Reference Value
 * Change all return% into percentile
